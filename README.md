@@ -1,9 +1,50 @@
-Hi,
+# Tufte-LaTeX for Quarto
 
-Welcome to the beginnings of Tufte LaTeX package to help you
-produce Tufte-style handouts, reports, and notes.
+Welcome to the Tufte-LaTeX package, now with **Quarto extension support** to help you produce Tufte-style handouts, reports, and books using Quarto Markdown.
 
-## Quick Start
+## Quarto Extension Quick Start
+
+### Installation
+
+To use this as a Quarto extension in your project:
+
+```bash
+quarto use template https://github.com/yourusername/quarto-tufte-latex
+```
+
+Or add it to an existing project:
+
+```bash
+quarto add https://github.com/yourusername/quarto-tufte-latex
+```
+
+### Usage
+
+1. Create a new Quarto document or use the provided `template.qmd`
+2. Set the format to `tufte-pdf` in your YAML header:
+
+```yaml
+---
+title: "Your Tufte-Style Document"
+format: tufte-pdf
+---
+```
+
+3. Render your document:
+
+```bash
+quarto render your-document.qmd
+```
+
+### Features
+
+- **Sidenotes**: Use standard footnote syntax `^[This becomes a sidenote]`
+- **Margin notes**: Use `:::{.marginnote}` divs for unnumbered margin notes
+- **Margin figures**: Use `:::{.marginfigure}` divs for figures in the margin
+- **Full-width content**: Use `.column-page` class for full-width figures and tables
+- **Tufte typography**: Automatic letterspacing, proper font sizes, and Tufte-style headings
+
+## LaTeX Quick Start (Traditional)
 
 Try typesetting `sample-handout.tex` with the following sequence
 of commands,

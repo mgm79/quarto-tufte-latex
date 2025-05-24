@@ -1,0 +1,73 @@
+% Front matter
+\frontmatter
+
+% Blank page
+\blankpage
+
+% Epigraphs page
+$if(epigraph)$
+\newpage\thispagestyle{empty}
+$for(epigraph)$
+\openepigraph{$epigraph.text$}{$epigraph.author$}
+$if(epigraph.vfill)$\vfill$endif$
+$endfor$
+$endif$
+
+% Title page
+\maketitle
+
+% Copyright page
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+$if(copyright)$
+Copyright \copyright\ $copyright$
+$else$
+Copyright \copyright\ \the\year\ $if(author)$$for(author)$$if(author.name)$$author.name$$else$$author$$endif$$sep$, $endfor$$endif$
+$endif$
+
+$if(publisher)$
+\par\smallcaps{Published by $publisher$}
+$endif$
+
+$if(license)$
+\par $license$
+$endif$
+
+\par\textit{First printing, \monthyear}
+\end{fullwidth}
+
+% Table of contents
+$if(toc)$
+{
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+\tableofcontents
+}
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+
+$if(dedication)$
+% Dedication
+\cleardoublepage
+~\vfill
+\begin{doublespace}
+\noindent\fontsize{18}{22}\selectfont\itshape
+\nohyphenation
+$dedication$
+\end{doublespace}
+\vfill
+\vfill
+$endif$
+
+% Start main matter
+\mainmatter

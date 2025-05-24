@@ -1,0 +1,70 @@
+% Tufte-LaTeX setup and customizations
+
+% Graphics path
+\graphicspath{{style-guide/graphics/}}
+
+% Package for sample text
+\usepackage{lipsum}
+
+% For nicely typeset tabular material
+\usepackage{booktabs}
+
+% The fancyvrb package for verbatim formatting
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Utility commands
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
+\newcommand{\hangstar}{\makebox[0pt][l]{*}}
+
+% xspace for smart spacing
+\usepackage{xspace}
+
+% Tufte book shortcuts
+\newcommand{\vdqi}{\textit{VDQI}\xspace}
+\newcommand{\ei}{\textit{EI}\xspace}
+\newcommand{\ve}{\textit{VE}\xspace}
+\newcommand{\be}{\textit{BE}\xspace}
+\newcommand{\VDQI}{\textit{The Visual Display of Quantitative Information}\xspace}
+\newcommand{\EI}{\textit{Envisioning Information}\xspace}
+\newcommand{\VE}{\textit{Visual Explanations}\xspace}
+\newcommand{\BE}{\textit{Beautiful Evidence}\xspace}
+
+\newcommand{\TL}{Tufte-\LaTeX\xspace}
+
+% Month/year command
+\newcommand{\monthyear}{%
+  \ifcase\month\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or
+  December\fi\space\number\year
+}
+
+% Epigraph command
+\newcommand{\openepigraph}[2]{%
+  \begin{fullwidth}
+  \sffamily\large
+  \begin{doublespace}
+  \noindent\allcaps{#1}\\% epigraph
+  \noindent\allcaps{#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
+
+% Blank page command
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+% Units package
+\usepackage{units}
+
+% Typesets font size, leading, and measure
+\newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+
+% Index generation
+\usepackage{makeidx}
+\makeindex
+
+% Custom environments for Quarto
+\usepackage{environ}
+
+% Note: marginfigure and marginnote are already defined by tufte-common.def
+% We don't need to redefine them here

@@ -1,0 +1,19 @@
+title: Tufte
+author: Tufte-LaTeX Developers
+version: 1.0.0
+contributes:
+  formats:
+    tufte-pdf:
+      template-partials:
+        - partials/doc-class.tex
+        - partials/title.tex
+        - partials/before-body.tex
+        - partials/after-body.tex
+      keep-tex: true
+      pdf-engine: pdflatex
+      cite-method: natbib
+      documentclass: tufte-book
+      classoption: 
+        - twoside
+        - symmetric
+      biblio-style: plainnat

@@ -1,0 +1,18 @@
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+\author{$for(author)$$if(author.name)$$author.name$$if(author.affiliation)$ \\ $author.affiliation$$endif$$else$$author$$endif$$sep$ \and $endfor$}
+$endif$
+$if(institute)$
+\institute{$for(institute)$$institute$$sep$ \and $endfor$}
+$endif$
+$if(publisher)$
+\publisher{$publisher$}
+$endif$
+$if(date)$
+\date{$date$}
+$endif$

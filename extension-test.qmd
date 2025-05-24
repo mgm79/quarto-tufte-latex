@@ -1,0 +1,16 @@
+---
+title: "Extension Test"
+format: tufte-pdf
+bibliography: style-guide/sample-handout.bib
+---
+
+# Introduction
+
+This is a test^[This is a sidenote] of the Tufte extension.
+
+Here's a citation [@Tufte2001].
+
+# References
+
+::: {#refs}
+:::

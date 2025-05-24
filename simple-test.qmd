@@ -1,0 +1,27 @@
+---
+title: "Simple Tufte Test"
+format:
+  pdf:
+    documentclass: tufte-book
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{lipsum}
+    cite-method: natbib
+bibliography: style-guide/sample-handout.bib
+---
+
+# Introduction
+
+This is a simple test^[This is a sidenote] of the Tufte style.
+
+The Tufte style is known for its distinctive sidenotes and marginal material.
+
+## A Simple Section
+
+Here's some content with a citation [@Tufte2001].
+
+# References
+
+::: {#refs}
+:::

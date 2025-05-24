@@ -1,0 +1,263 @@
+---
+title: "A Tufte-Style Book"
+subtitle: "Thanks to Edward R. Tufte for his inspiration"
+author: 
+  - name: "The Tufte-LaTeX Developers"
+    affiliation: "Tufte-LaTeX Project"
+publisher: "Publisher of This Book"
+date: today
+format:
+  pdf:
+    documentclass: tufte-book
+    classoption: 
+      - twoside
+      - symmetric
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{lipsum}
+          \usepackage{booktabs}
+          \usepackage{graphicx}
+          \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+          \graphicspath{{style-guide/graphics/}}
+          \usepackage{fancyvrb}
+          \fvset{fontsize=\normalsize}
+          \newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
+          \newcommand{\hangstar}{\makebox[0pt][l]{*}}
+          \usepackage{xspace}
+          \newcommand{\vdqi}{\textit{VDQI}\xspace}
+          \newcommand{\ei}{\textit{EI}\xspace}
+          \newcommand{\ve}{\textit{VE}\xspace}
+          \newcommand{\be}{\textit{BE}\xspace}
+          \newcommand{\VDQI}{\textit{The Visual Display of Quantitative Information}\xspace}
+          \newcommand{\EI}{\textit{Envisioning Information}\xspace}
+          \newcommand{\VE}{\textit{Visual Explanations}\xspace}
+          \newcommand{\BE}{\textit{Beautiful Evidence}\xspace}
+          \newcommand{\TL}{Tufte-\LaTeX\xspace}
+          \newcommand{\monthyear}{%
+            \ifcase\month\or January\or February\or March\or April\or May\or June\or
+            July\or August\or September\or October\or November\or
+            December\fi\space\number\year
+          }
+          \newcommand{\openepigraph}[2]{%
+            \begin{fullwidth}
+            \sffamily\large
+            \begin{doublespace}
+            \noindent\allcaps{#1}\\
+            \noindent\allcaps{#2}
+            \end{doublespace}
+            \end{fullwidth}
+          }
+          \newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+          \usepackage{units}
+          \newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+          \usepackage{makeidx}
+          \makeindex
+bibliography: style-guide/sample-handout.bib
+---
+
+::: {.epigraph}
+The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design, because that is what it lives with. The new becomes threatening, the old reassuring.
+
+-- Paul Rand
+:::
+
+::: {.epigraph}
+A designer knows that he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.
+
+-- Antoine de Saint-Exupéry
+:::
+
+::: {.epigraph}
+...the designer of a new system must not only be the implementor and the first large-scale user; the designer should also write the first user manual... If I had not participated fully in all these activities, literally hundreds of improvements would never have been made, because I would never have thought of them or perceived why they were important.
+
+-- Donald E. Knuth
+:::
+
+# Introduction {.unnumbered}
+
+This sample book discusses the design of Edward Tufte's books[@Tufte2001; @Tufte1990; @Tufte1997; @Tufte2006] and the use of the `tufte-book` and `tufte-handout` document classes.
+
+# The Design of Tufte's Books {#ch:tufte-design}
+
+^[The pages] of a book are usually divided into three major sections: the front matter (also called preliminary matter or prelim), the main matter (the core text of the book), and the back matter (or end matter).
+
+^[The front matter] of a book refers to all of the material that comes before the main text. The following table shows a list of material that appears in the front matter of @VDQI, @EI, @VE, and @BE along with its page number. Page numbers that appear in parentheses refer to folios that do not have a printed page number (but they are still counted in the page number sequence).
+
+| Page content | @vdqi | @ei | @ve | @be |
+|:-------------|:-----:|:---:|:---:|:---:|
+| Blank half title page | (1) | (1) | (1) | (1) |
+| Frontispiece^[The contents of this page vary from book to book. In @vdqi this page is blank; in @ei and @ve this page holds a frontispiece; and in @be this page contains three epigraphs.] | (2) | (2) | (2) | (2) |
+| Full title page | (3) | (3) | (3) | (3) |
+| Copyright page | (4) | (4) | (4) | (4) |
+| Contents | (5) | (5) | (5) | (5) |
+| Dedication | (6) | (7) | (7) | 7 |
+| Epigraph | -- | -- | (8) | -- |
+| Introduction | (7) | (9) | (9) | 9 |
+
+: Front matter pages across Tufte's books
+
+The design of the front matter in Tufte's books varies slightly from the traditional design of front matter. First, the pages in front matter are traditionally numbered with lowercase roman numerals (e.g., i, ii, iii, iv, ...). Second, the front matter page numbering sequence is usually separate from the main matter page numbering. That is, the page numbers restart at 1 when the main matter begins. In contrast, Tufte has enumerated his pages with arabic numerals that share the same page counting sequence as the main matter.
+
+## Typefaces {#sec:typefaces1}
+
+Tufte's books primarily use two typefaces: Bembo and Gill Sans. Bembo is used for the headings and body text, while Gill Sans is used for the title page and opening epigraphs in @BE.
+
+Since neither Bembo nor Gill Sans are available in default LaTeX installations, the Tufte-LaTeX document classes default to using Palatino and Helvetica, respectively. In addition, the Bera Mono typeface is used for `monospaced` type.
+
+The following font sizes are defined by the Tufte-LaTeX classes:
+
+| LaTeX size | Font size | Leading | Used for |
+|:-----------|:---------:|:-------:|:---------|
+| `\tiny` | 5 | 6 | sidenote numbers |
+| `\scriptsize` | 7 | 8 | -- |
+| `\footnotesize` | 8 | 10 | sidenotes, captions |
+| `\small` | 9 | 12 | quote, quotation, and verse environments |
+| `\normalsize` | 10 | 14 | body text |
+| `\large` | 11 | 15 | **B**-heads |
+| `\Large` | 12 | 16 | **A**-heads, TOC entries, author, date |
+| `\LARGE` | 14 | 18 | handout title |
+| `\huge` | 20 | 30 | chapter heads |
+| `\Huge` | 24 | 36 | part titles |
+
+: LaTeX font sizes as defined by the Tufte-LaTeX document classes {#tbl:font-sizes}
+
+## Headings {#sec:headings1}
+
+Tufte's books include the following heading levels: parts, chapters^[Parts and chapters are defined for the `tufte-book` class only.], sections, subsections, and paragraphs. Not defined by default are: sub-subsections and subparagraphs.
+
+| Heading | Style | Size |
+|:--------|:------|:-----|
+| Part | roman | 24/36×40 pc |
+| Chapter | italic | 20/30×40 pc |
+| Section | italic | 12/16×26 pc |
+| Subsection | italic | 11/15×26 pc |
+| Paragraph | italic | 10/14 |
+
+: Heading styles used in @BE {#tbl:heading-styles}
+
+### Paragraph {.unnumbered}
+
+Paragraph headings (as shown here) are introduced by italicized text and separated from the main paragraph by a bit of space.
+
+## Environments
+
+The following characteristics define the various environments:
+
+| Environment | Font size | Notes |
+|:------------|:----------|:------|
+| Body text | 10/14×26 pc | |
+| Block quote | 9/12×24 pc | Block indent (left and right) by 1 pc |
+| Sidenotes | 8/10×12 pc | Sidenote number is set inline, followed by word space |
+| Captions | 8/10×12 pc | |
+
+: Environment styles used in @BE {#tbl:environment-styles}
+
+# On the Use of the tufte-book Document Class {#ch:tufte-book}
+
+The Tufte-LaTeX document classes define a style similar to the style Edward Tufte uses in his books and handouts. Tufte's style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography. This document aims to be at once a demonstration of the features of the Tufte-LaTeX document classes and a style guide to their use.
+
+## Page Layout {#sec:page-layout}
+
+### Headings {#sec:headings}
+
+This style provides **A**- and **B**-heads (that is, `\section` and `\subsection`), demonstrated above.
+
+If you need more than two levels of section headings, you'll have to define them yourself at the moment; there are no pre-defined styles for anything below a `\subsection`. As Bringhurst points out in *The Elements of Typographic Style*[@Bringhurst2005], you should "use as many levels of headings as you need: no more, and no fewer."
+
+The Tufte-LaTeX classes will emit an error if you try to use `\subsubsection` and smaller headings.
+
+^[In his later books][@Tufte2006], Tufte starts each section with a bit of vertical space, a non-indented paragraph, and sets the first few words of the sentence in small caps. To accomplish this using this style, use the `\newthought` command.
+
+## Sidenotes {#sec:sidenotes}
+
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes.^[This is a sidenote that was entered using the footnote syntax.] There is a wide margin to provide ample room for sidenotes and small figures. Any footnotes will automatically be converted to sidenotes.
+
+::: {.marginnote}
+This is a margin note. Notice that there isn't a number preceding the note, and there is no number in the main text where this note was written.
+:::
+
+## References
+
+References are placed alongside their citations as sidenotes, as well.^[The first paragraph of this document includes a citation.] This can be accomplished using the normal citation syntax.
+
+The complete list of references may also be printed automatically using standard Quarto bibliography features.
+
+## Figures and Tables {#sec:figures-and-tables}
+
+Images and graphics play an integral role in Tufte's work. In addition to the standard figure and table environments, this style provides special figure and table environments for full-width floats.
+
+::: {.marginfigure}
+![This is a margin figure. The helix is defined by $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$. The figure was drawn using Asymptote.](style-guide/graphics/helix.pdf){#fig:marginfig}
+:::
+
+Full page-width figures and tables may be placed using the `column: page` directive.
+
+![This graph shows $y = \sin x$ from about $x = [-10, 10]$. *Notice that this figure takes up the full page width.*](style-guide/graphics/sine.pdf){#fig:fullfig .column-page}
+
+![Hilbert curves of various degrees $n$. *Notice that this figure only takes up the main textblock width.*](style-guide/graphics/hilbertcurves.pdf){#fig:textfig}
+
+Table @tbl:normaltab shows a table created with standard Quarto table syntax. Notice the lack of vertical rules—they serve only to clutter the table's data.
+
+| Margin | Length |
+|:-------|:-------|
+| Paper width | 8½ inches |
+| Paper height | 11 inches |
+| Textblock width | 6½ inches |
+| Textblock/sidenote gutter | ⅜ inches |
+| Sidenote width | 2 inches |
+
+: Dimensions of the various margins used in the Tufte-handout class {#tbl:normaltab}
+
+## Typography {#sec:typography}
+
+### Typefaces {#sec:typefaces}
+
+If the Palatino, Helvetica, and Bera Mono typefaces are installed, this style will use them automatically. Otherwise, we'll fall back on the Computer Modern typefaces.
+
+### Letterspacing {#sec:letterspacing}
+
+This document class includes improvements for letterspacing. When setting strings of ALL CAPS or small caps, the letterspacing—that is, the spacing between the letters—should be increased slightly[@Bringhurst2005].
+
+## Document Class Options {#sec:options}
+
+The `tufte-book` class is based on the LaTeX `book` document class. Therefore, you can pass any of the typical book options. There are a few options that are specific to the `tufte-book` document class, however.
+
+The `a4paper` option will set the paper size to A4 instead of the default US letter size.
+
+The `sfsidenotes` option will set the sidenotes and title block in a sans serif typeface instead of the default roman.
+
+The `twoside` option will modify the running heads so that the page number is printed on the outside edge (as opposed to always printing the page number on the right-side edge in `oneside` mode).
+
+The `symmetric` option typesets the sidenotes on the outside edge of the page. This is how books are traditionally printed, but is contrary to Tufte's book design which sets the sidenotes on the right side of the page. This option implicitly sets the `twoside` option.
+
+The `justified` option sets all the text fully justified (flush left and right). The default is to set the text ragged right. The body text of Tufte's books are set ragged right. This prevents needless hyphenation and makes it easier to read the text in the slightly narrower column.
+
+# Customizing Tufte-LaTeX {#ch:customizing}
+
+The Tufte-LaTeX document classes are designed to closely emulate Tufte's book design by default. However, each document is different and you may encounter situations where the default settings are insufficient. This chapter explores many of the ways you can adjust the Tufte-LaTeX document classes to better fit your needs.
+
+## Numbered Section Headings {#sec:numbered-sections}
+
+While Tufte dispenses with numbered headings in his books, if you require them, they can be enabled by setting the `number-sections: true` option in the YAML header.
+
+## Changing the Paper Size {#sec:paper-size}
+
+The Tufte-LaTeX classes currently provide support for different paper sizes through the `papersize` option in the YAML header.
+
+# Compatibility Issues {#ch:compatibility}
+
+When switching an existing document from one document class to a Tufte-LaTeX document class, a few changes to the document may have to be made.
+
+## Converting from article to tufte-handout
+
+Certain heading levels are not supported: `\subsubsection` and `\subparagraph`.
+
+## Converting from book to tufte-book
+
+Similar restrictions apply for the book class conversion.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
