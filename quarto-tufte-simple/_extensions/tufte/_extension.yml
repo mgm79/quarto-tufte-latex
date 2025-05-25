@@ -1,0 +1,16 @@
+title: Tufte LaTeX Generator
+author: Tufte-LaTeX Developers
+version: 1.0.0
+contributes:
+  formats:
+    tufte-latex:
+      from: markdown
+      to: latex
+      standalone: true
+      template: template.tex
+      keep-tex: true
+      pdf-engine: false  # Don't try to compile PDF
+      cite-method: natbib
+      biblio-style: plainnat
+      documentclass: tufte-book
+      classoption: []

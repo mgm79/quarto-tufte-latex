@@ -1,0 +1,36 @@
+---
+title: "Minimal Tufte Test"
+format:
+  pdf:
+    documentclass: tufte-book
+    classoption: 
+      - twoside 
+      - symmetric
+    pdf-engine: pdflatex
+    keep-tex: true
+    cite-method: natbib
+    include-in-header:
+      - text: |
+          \usepackage{lipsum}
+          \graphicspath{{style-guide/graphics/}}
+bibliography: style-guide/sample-handout.bib
+---
+
+# Introduction
+
+This is a minimal test^[This is a sidenote] of the Tufte LaTeX classes with Quarto.
+
+The test includes a citation [@Tufte2001] and shows that the basic functionality works.
+
+::: {.marginfigure}
+![This is a margin figure showing a helix.](style-guide/graphics/helix.pdf)
+:::
+
+## A Section
+
+Some more content to demonstrate the layout.
+
+# References
+
+::: {#refs}
+:::

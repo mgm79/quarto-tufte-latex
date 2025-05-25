@@ -1,0 +1,281 @@
+\documentclass[twoside,symmetric]{tufte-book}
+
+\hypersetup{colorlinks}
+
+% Book metadata
+\title{A Tufte-Style Book\thanks{Thanks to Edward R.~Tufte for his inspiration.}}
+\author[The Tufte-LaTeX Developers]{The Tufte-LaTeX\ Developers}
+\publisher{Publisher of This Book}
+
+% Packages
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{style-guide/graphics/}}
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+\usepackage{xspace}
+\usepackage{units}
+\usepackage{makeidx}
+\makeindex
+
+% Custom commands from original
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
+\newcommand{\hangstar}{\makebox[0pt][l]{*}}
+\newcommand{\vdqi}{\textit{VDQI}\xspace}
+\newcommand{\ei}{\textit{EI}\xspace}
+\newcommand{\ve}{\textit{VE}\xspace}
+\newcommand{\be}{\textit{BE}\xspace}
+\newcommand{\VDQI}{\textit{The Visual Display of Quantitative Information}\xspace}
+\newcommand{\EI}{\textit{Envisioning Information}\xspace}
+\newcommand{\VE}{\textit{Visual Explanations}\xspace}
+\newcommand{\BE}{\textit{Beautiful Evidence}\xspace}
+\newcommand{\TL}{Tufte-\LaTeX\xspace}
+\newcommand{\monthyear}{%
+  \ifcase\month\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or
+  December\fi\space\number\year
+}
+\newcommand{\openepigraph}[2]{%
+  \begin{fullwidth}
+  \sffamily\large
+  \begin{doublespace}
+  \noindent\allcaps{#1}\\% epigraph
+  \noindent\allcaps{#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+\newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+\newcommand{\na}{\quad--}
+
+\begin{document}
+
+% Front matter
+\frontmatter
+
+% Blank page
+\blankpage
+
+% Epigraphs page
+\newpage\thispagestyle{empty}
+\openepigraph{%
+The public is more familiar with bad design than good design.
+It is, in effect, conditioned to prefer bad design, 
+because that is what it lives with. 
+The new becomes threatening, the old reassuring.
+}{Paul Rand}
+\vfill
+\openepigraph{%
+A designer knows that he has achieved perfection 
+not when there is nothing left to add, 
+but when there is nothing left to take away.
+}{Antoine de Saint-Exup\'{e}ry}
+\vfill
+\openepigraph{%
+\ldots the designer of a new system must not only be the implementor and the first 
+large-scale user; the designer should also write the first user manual\ldots 
+If I had not participated fully in all these activities, 
+literally hundreds of improvements would never have been made, 
+because I would never have thought of them or perceived 
+why they were important.
+}{Donald E. Knuth}
+
+% Title page
+\maketitle
+
+% Copyright page
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+\par\smallcaps{Published by \thanklesspublisher}
+
+\par\smallcaps{tufte-latex.github.io/tufte-latex/}
+
+\par Licensed under the Apache License, Version 2.0 (the ``License''); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}. Unless
+required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.
+
+\par\textit{First printing, \monthyear}
+\end{fullwidth}
+
+% Table of contents
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Dedication
+\cleardoublepage
+~\vfill
+\begin{doublespace}
+\noindent\fontsize{18}{22}\selectfont\itshape
+\nohyphenation
+Dedicated to those who appreciate \LaTeX{} 
+and the work of \mbox{Edward R.~Tufte} 
+and \mbox{Donald E.~Knuth}.
+\end{doublespace}
+\vfill
+\vfill
+
+% Introduction
+\cleardoublepage
+\chapter*{Introduction}
+
+This sample book discusses the design of Edward Tufte's books
+and the use of the \texttt{tufte-book} and \texttt{tufte-handout} document classes.
+
+% Start main matter
+\mainmatter
+
+\chapter{The Design of Tufte's Books}
+\label{ch:tufte-design}
+
+\newthought{The pages} of a book are usually divided into three major
+sections: the front matter (also called preliminary matter or prelim), the
+main matter (the core text of the book), and the back matter (or end
+matter).
+
+\newthought{The front matter} of a book refers to all of the material that
+comes before the main text.  The following table shows a list of
+material that appears in the front matter of \VDQI, \EI, \VE, and \BE
+along with its page number.  Page numbers that appear in parentheses refer
+to folios that do not have a printed page number (but they are still
+counted in the page number sequence).
+
+\bigskip
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{4}{c}{Books} \\
+\cmidrule(l){2-5} 
+Page content & \vdqi & \ei & \ve & \be \\
+\midrule
+Blank half title page & \hangp{1} & \hangp{1} & \hangp{1} & \hangp{1} \\
+Frontispiece\footnotemark{}
+  & \hangp{2} & \hangp{2} & \hangp{2} & \hangp{2} \\
+Full title page & \hangp{3} & \hangp{3} & \hangp{3} & \hangp{3} \\
+Copyright page & \hangp{4} & \hangp{4} & \hangp{4} & \hangp{4} \\
+Contents & \hangp{5} & \hangp{5} & \hangp{5} & \hangp{5} \\
+Dedication & \hangp{6} & \hangp{7} & \hangp{7} & 7 \\
+Epigraph & -- & -- & \hangp{8} & -- \\
+Introduction & \hangp{7} & \hangp{9} & \hangp{9} & 9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\footnotetext{The contents of this page vary from book to book.  In
+  \vdqi this page is blank; in \ei and \ve this page holds a frontispiece;
+  and in \be this page contains three epigraphs.}
+
+\section{Typefaces}
+
+Tufte's books primarily use two typefaces: Bembo and Gill Sans.  Bembo is used
+for the headings and body text, while Gill Sans is used for the title page and
+opening epigraphs in \BE.
+
+Since neither Bembo nor Gill Sans are available in default \LaTeX{}
+installations, the \TL document classes default to using Palatino and
+Helvetica, respectively.  In addition, the Bera Mono typeface is used for
+\texttt{monospaced} type.
+
+\section{Sidenotes}
+
+One of the most prominent and distinctive features of this style is the
+extensive use of sidenotes.  There is a wide margin to provide ample room
+for sidenotes and small figures.  Any footnotes will automatically
+be converted to sidenotes.\footnote{This is a sidenote that was entered
+using the footnote command.}  If you'd like to place ancillary
+information in the margin without the sidenote mark (the superscript
+number), you can use the marginnote command.\marginnote{This is a
+margin note.  Notice that there isn't a number preceding the note, and
+there is no number in the main text where this note was written.}
+
+\section{Figures and Tables}
+
+Images and graphics play an integral role in Tufte's work.
+In addition to the standard figure and tabular environments,
+this style provides special figure and table environments for full-width
+floats.
+
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{helix}
+  \caption{This is a margin figure.  The helix is defined by 
+    $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$.  The figure was
+    drawn using Asymptote.}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+Figure~\ref{fig:fullfig} is an example of a full-width figure and Figure~\ref{fig:textfig} is an example of the normal
+figure environment.
+
+\begin{figure*}[h]
+  \includegraphics[width=\linewidth]{sine.pdf}%
+  \caption{This graph shows $y = \sin x$ from about $x = [-10, 10]$.
+  \emph{Notice that this figure takes up the full page width.}}%
+  \label{fig:fullfig}%
+\end{figure*}
+
+\begin{figure}
+  \includegraphics{hilbertcurves.pdf}
+  \caption{Hilbert curves of various degrees $n$. \emph{Notice that this figure only takes up the main textblock width.}}
+  \label{fig:textfig}
+\end{figure}
+
+Table~\ref{tab:normaltab} shows a table created with the booktabs
+package.  Notice the lack of vertical rules---they serve only to clutter
+the table's data.
+
+\begin{table}[ht]
+  \centering
+  \fontfamily{ppl}\selectfont
+  \begin{tabular}{ll}
+    \toprule
+    Margin & Length \\
+    \midrule
+    Paper width & \unit[8\nicefrac{1}{2}]{inches} \\
+    Paper height & \unit[11]{inches} \\
+    Textblock width & \unit[6\nicefrac{1}{2}]{inches} \\
+    Textblock/sidenote gutter & \unit[\nicefrac{3}{8}]{inches} \\
+    Sidenote width & \unit[2]{inches} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Here are the dimensions of the various margins used in the Tufte-handout class.}
+  \label{tab:normaltab}
+\end{table}
+
+\chapter{On the Use of the tufte-book Document Class}
+
+The \TL document classes define a style similar to the
+style Edward Tufte uses in his books and handouts.  Tufte's style is known
+for its extensive use of sidenotes, tight integration of graphics with
+text, and well-set typography.
+
+\chapter{Typography}
+
+If the Palatino, Helvetica, and Bera Mono typefaces are installed, this style
+will use them automatically.  Otherwise, we'll fall back on the Computer Modern
+typefaces.
+
+When setting strings of \allcaps{ALL CAPS} or \smallcaps{small caps}, the
+letterspacing---that is, the spacing between the letters---should be
+increased slightly.  The \texttt{allcaps} command has proper letterspacing for
+strings of \allcaps{FULL CAPITAL LETTERS}, and the \texttt{smallcaps} command
+has letterspacing for \smallcaps{small capital letters}.  These commands
+will also automatically convert the case of the text to upper- or
+lowercase, respectively.
+
+\backmatter
+
+\end{document}

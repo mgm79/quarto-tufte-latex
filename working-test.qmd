@@ -1,0 +1,79 @@
+---
+title: "A Tufte-Style Book"
+subtitle: "Thanks to Edward R. Tufte for his inspiration"
+author: "The Tufte-LaTeX Developers"
+date: "2025-05-24"
+format:
+  pdf:
+    documentclass: tufte-book
+    classoption:
+      - twoside
+      - symmetric
+    pdf-engine: pdflatex
+    keep-tex: true
+    template-partials:
+      - _extensions/tufte/partials/before-body.tex
+      - _extensions/tufte/partials/after-body.tex
+    include-in-header:
+      - text: |
+          \usepackage{lipsum}
+          \usepackage{graphicx}
+          \graphicspath{{style-guide/graphics/}}
+          \newcommand{\TL}{Tufte-\LaTeX\xspace}
+          \newcommand{\newthought}[1]{\noindent\textsc{#1}}
+    cite-method: natbib
+bibliography: style-guide/sample-handout.bib
+---
+
+\frontmatter
+
+\openepigraph{The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design, because that is what it lives with. The new becomes threatening, the old reassuring.}{Paul Rand}
+
+\vfill
+
+\openepigraph{A designer knows that he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.}{Antoine de Saint-Exupéry}
+
+\vfill
+
+\openepigraph{...the designer of a new system must not only be the implementor and the first large-scale user; the designer should also write the first user manual... If I had not participated fully in all these activities, literally hundreds of improvements would never have been made, because I would never have thought of them or perceived why they were important.}{Donald E. Knuth}
+
+\maketitle
+
+\tableofcontents
+\listoffigures  
+\listoftables
+
+\mainmatter
+
+# Introduction {.unnumbered}
+
+This sample book discusses the design of Edward Tufte's books[@Tufte2001; @Tufte1990; @Tufte1997; @Tufte2006] and the use of the `tufte-book` and `tufte-handout` document classes.
+
+# The Design of Tufte's Books {#ch:tufte-design}
+
+\newthought{The pages} of a book are usually divided into three major sections: the front matter (also called preliminary matter or prelim), the main matter (the core text of the book), and the back matter (or end matter).
+
+\newthought{The front matter} of a book refers to all of the material that comes before the main text.
+
+## Sidenotes
+
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes.^[This is a sidenote that was entered using the footnote command.] There is a wide margin to provide ample room for sidenotes and small figures.
+
+## Figures and Tables
+
+Images and graphics play an integral role in Tufte's work.
+
+::: {.marginfigure}
+![This is a margin figure. The helix is defined by $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$.](style-guide/graphics/helix.pdf)
+:::
+
+Full page-width figures may be placed using the `.column-page` class.
+
+:::: {.column-page}
+![This graph shows $y = \sin x$ from about $x = [-10, 10]$. *Notice that this figure takes up the full page width.*](style-guide/graphics/sine.pdf)
+::::
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

@@ -9,7 +9,7 @@ $if(epigraph)$
 \newpage\thispagestyle{empty}
 $for(epigraph)$
 \openepigraph{$epigraph.text$}{$epigraph.author$}
-$if(epigraph.vfill)$\vfill$endif$
+\vfill
 $endfor$
 $endif$
 
@@ -24,17 +24,22 @@ $endif$
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{\baselineskip}
 $if(copyright)$
-Copyright \copyright\ $copyright$
+$copyright$
 $else$
 Copyright \copyright\ \the\year\ $if(author)$$for(author)$$if(author.name)$$author.name$$else$$author$$endif$$sep$, $endfor$$endif$
-$endif$
 
-$if(publisher)$
-\par\smallcaps{Published by $publisher$}
-$endif$
+\par\smallcaps{Published by $if(publisher)$$publisher$$else$Publisher of This Book$endif$}
 
-$if(license)$
-\par $license$
+\par\smallcaps{tufte-latex.github.io/tufte-latex/}
+
+\par Licensed under the Apache License, Version 2.0 (the ``License''); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}. Unless
+required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.
 $endif$
 
 \par\textit{First printing, \monthyear}

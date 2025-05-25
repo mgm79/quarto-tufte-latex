@@ -9,6 +9,8 @@ contributes:
         - partials/title.tex
         - partials/before-body.tex
         - partials/after-body.tex
+      include-in-header:
+        - tufte-setup.tex
       keep-tex: true
       pdf-engine: pdflatex
       cite-method: natbib

@@ -1,0 +1,106 @@
+---
+title: "A Tufte-Style Book"
+subtitle: "Thanks to Edward R. Tufte for his inspiration"  
+author: "The Tufte-LaTeX Developers"
+date: "2025-05-24"
+format:
+  pdf:
+    documentclass: tufte-book
+    classoption:
+      - twoside
+      - symmetric
+    pdf-engine: pdflatex
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{lipsum}
+          \usepackage{graphicx}
+          \graphicspath{{style-guide/graphics/}}
+          % Redefine commands to avoid conflicts
+          \providecommand{\TL}{Tufte-\LaTeX}
+    cite-method: natbib
+bibliography: style-guide/sample-handout.bib
+---
+
+<!-- Front matter will be handled by Tufte class -->
+
+# Introduction {.unnumbered}
+
+This sample book discusses the design of Edward Tufte's books[@Tufte2001; @Tufte1990; @Tufte1997; @Tufte2006] and the use of the `tufte-book` and `tufte-handout` document classes.
+
+# The Design of Tufte's Books
+
+The pages of a book are usually divided into three major sections: the front matter (also called preliminary matter or prelim), the main matter (the core text of the book), and the back matter (or end matter).
+
+The front matter of a book refers to all of the material that comes before the main text. The following table shows a list of material that appears in the front matter of *VDQI*, *EI*, *VE*, and *BE* along with its page number.
+
+| Page content | VDQI | EI | VE | BE |
+|:-------------|:----:|:--:|:--:|:--:|
+| Blank half title page | (1) | (1) | (1) | (1) |
+| Frontispiece | (2) | (2) | (2) | (2) |
+| Full title page | (3) | (3) | (3) | (3) |
+| Copyright page | (4) | (4) | (4) | (4) |
+| Contents | (5) | (5) | (5) | (5) |
+| Dedication | (6) | (7) | (7) | 7 |
+| Introduction | (7) | (9) | (9) | 9 |
+
+: Front matter pages across Tufte's books
+
+## Typefaces
+
+Tufte's books primarily use two typefaces: Bembo and Gill Sans. Bembo is used for the headings and body text, while Gill Sans is used for the title page and opening epigraphs.
+
+Since neither Bembo nor Gill Sans are available in default LaTeX installations, the Tufte-LaTeX document classes default to using Palatino and Helvetica, respectively.
+
+## Sidenotes
+
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes.^[This is a sidenote that was entered using the footnote syntax.] There is a wide margin to provide ample room for sidenotes and small figures.
+
+## Figures and Tables
+
+Images and graphics play an integral role in Tufte's work. In addition to the standard figure and table environments, this style provides special figure and table environments for full-width floats.
+
+![This is a margin figure. The helix is defined by $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$.](style-guide/graphics/helix.pdf){width=50%}
+
+![This graph shows $y = \sin x$ from about $x = [-10, 10]$. *Notice that this figure takes up the full page width.*](style-guide/graphics/sine.pdf){.column-page}
+
+![Hilbert curves of various degrees $n$. *Notice that this figure only takes up the main textblock width.*](style-guide/graphics/hilbertcurves.pdf){width=70%}
+
+| Margin | Length |
+|:-------|:-------|
+| Paper width | 8½ inches |
+| Paper height | 11 inches |
+| Textblock width | 6½ inches |
+| Textblock/sidenote gutter | ⅜ inches |
+| Sidenote width | 2 inches |
+
+: Dimensions of the various margins used in the Tufte-handout class
+
+# On the Use of the tufte-book Document Class
+
+The Tufte-LaTeX document classes define a style similar to the style Edward Tufte uses in his books and handouts. Tufte's style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography.
+
+## Page Layout
+
+This style provides **A**- and **B**-heads (that is, `\section` and `\subsection`), demonstrated above.
+
+If you need more than two levels of section headings, you'll have to define them yourself at the moment; there are no pre-defined styles for anything below a `\subsection`.
+
+## Typography
+
+When setting strings of ALL CAPS or small caps, the letterspacing—that is, the spacing between the letters—should be increased slightly[@Bringhurst2005].
+
+## Document Class Options
+
+The `tufte-book` class is based on the LaTeX `book` document class. Therefore, you can pass any of the typical book options. There are a few options that are specific to the `tufte-book` document class, however.
+
+The `a4paper` option will set the paper size to A4 instead of the default US letter size.
+
+The `twoside` option will modify the running heads so that the page number is printed on the outside edge.
+
+The `symmetric` option typesets the sidenotes on the outside edge of the page. This is how books are traditionally printed, but is contrary to Tufte's book design which sets the sidenotes on the right side of the page.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

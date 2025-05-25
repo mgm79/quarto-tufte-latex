@@ -1,0 +1,409 @@
+---
+title: "A Tufte-Style Book"
+subtitle: "Thanks to Edward R. Tufte for his inspiration"
+author: 
+  - name: "The Tufte-LaTeX Developers"
+    affiliation: "Tufte-LaTeX Project"
+publisher: "Publisher of This Book"
+date: today
+format:
+  tufte-pdf:
+    documentclass: tufte-book
+    classoption: 
+      - twoside
+      - symmetric
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \hypersetup{colorlinks}
+          \usepackage{lipsum}
+          \usepackage{booktabs}
+          \usepackage{graphicx}
+          \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+          \graphicspath{{style-guide/graphics/}}
+          \usepackage{fancyvrb}
+          \fvset{fontsize=\normalsize}
+          \newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
+          \newcommand{\hangstar}{\makebox[0pt][l]{*}}
+          \usepackage{xspace}
+          \newcommand{\vdqi}{\textit{VDQI}\xspace}
+          \newcommand{\ei}{\textit{EI}\xspace}
+          \newcommand{\ve}{\textit{VE}\xspace}
+          \newcommand{\be}{\textit{BE}\xspace}
+          \newcommand{\VDQI}{\textit{The Visual Display of Quantitative Information}\xspace}
+          \newcommand{\EI}{\textit{Envisioning Information}\xspace}
+          \newcommand{\VE}{\textit{Visual Explanations}\xspace}
+          \newcommand{\BE}{\textit{Beautiful Evidence}\xspace}
+          \newcommand{\TL}{Tufte-\LaTeX\xspace}
+          \newcommand{\monthyear}{%
+            \ifcase\month\or January\or February\or March\or April\or May\or June\or
+            July\or August\or September\or October\or November\or
+            December\fi\space\number\year
+          }
+          \newcommand{\openepigraph}[2]{%
+            \begin{fullwidth}
+            \sffamily\large
+            \begin{doublespace}
+            \noindent\allcaps{#1}\\
+            \noindent\allcaps{#2}
+            \end{doublespace}
+            \end{fullwidth}
+          }
+          \newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+          \usepackage{units}
+          \newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+          \newcommand{\hlred}[1]{\textcolor{Maroon}{#1}}
+          \newcommand{\hangleft}[1]{\makebox[0pt][r]{#1}}
+          \newcommand{\hairsp}{\hspace{1pt}}
+          \newcommand{\hquad}{\hskip0.5em\relax}
+          \newcommand{\TODO}{\textcolor{red}{\bf TODO!}\xspace}
+          \newcommand{\na}{\quad--}
+          \providecommand{\XeLaTeX}{X\lower.5ex\hbox{\kern-0.15em\reflectbox{E}}\kern-0.1em\LaTeX}
+          \newcommand{\tXeLaTeX}{\XeLaTeX\index{XeLaTeX@\protect\XeLaTeX}}
+          \newcommand{\tuftebs}{\symbol{'134}}
+          \newcommand{\doccmdnoindex}[2][]{\texttt{\tuftebs#2}}
+          \newcommand{\doccmddef}[2][]{%
+            \hlred{\texttt{\tuftebs#2}}\label{cmd:#2}%
+            \ifthenelse{\isempty{#1}}%
+              {\index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}}%
+              {\index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}%
+               \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}}%
+          }
+          \newcommand{\doccmd}[2][]{%
+            \texttt{\tuftebs#2}%
+            \ifthenelse{\isempty{#1}}%
+              {\index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}}%
+              {\index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}%
+               \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}}%
+          }
+          \newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}
+          \newcommand{\docarg}[1]{\textrm{\textit{#1}}}
+          \newenvironment{docspec}{\begin{quotation}\ttfamily\parskip0pt\parindent0pt\ignorespaces}{\end{quotation}}
+          \newcommand{\docenv}[1]{\texttt{#1}\index{#1 environment@\texttt{#1} environment}\index{environments!#1@\texttt{#1}}}
+          \newcommand{\docenvdef}[1]{\hlred{\texttt{#1}}\label{env:#1}\index{#1 environment@\texttt{#1} environment}\index{environments!#1@\texttt{#1}}}
+          \newcommand{\docpkg}[1]{\texttt{#1}\index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}}
+          \newcommand{\doccls}[1]{\texttt{#1}}
+          \newcommand{\docclsopt}[1]{\texttt{#1}\index{#1 class option@\texttt{#1} class option}\index{class options!#1@\texttt{#1}}}
+          \newcommand{\docclsoptdef}[1]{\hlred{\texttt{#1}}\label{clsopt:#1}\index{#1 class option@\texttt{#1} class option}\index{class options!#1@\texttt{#1}}}
+          \newcommand{\docmsg}[2]{\bigskip\begin{fullwidth}\noindent\ttfamily#1\end{fullwidth}\medskip\par\noindent#2}
+          \newcommand{\docfilehook}[2]{\texttt{#1}\index{file hooks!#2}\index{#1@\texttt{#1}}}
+          \newcommand{\doccounter}[1]{\texttt{#1}\index{#1 counter@\texttt{#1} counter}}
+          \usepackage{makeidx}
+          \makeindex
+bibliography: style-guide/sample-handout.bib
+epigraph:
+  - text: "The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design, because that is what it lives with. The new becomes threatening, the old reassuring."
+    author: "Paul Rand"
+  - text: "A designer knows that he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away."
+    author: "Antoine de Saint-Exupéry"
+  - text: "...the designer of a new system must not only be the implementor and the first large-scale user; the designer should also write the first user manual... If I had not participated fully in all these activities, literally hundreds of improvements would never have been made, because I would never have thought of them or perceived why they were important."
+    author: "Donald E. Knuth"
+dedication: "Dedicated to those who appreciate LaTeX and the work of Edward R. Tufte and Donald E. Knuth."
+copyright: "Licensed under the Apache License, Version 2.0"
+toc: true
+lof: true
+lot: true
+---
+
+# Introduction {.unnumbered}
+
+This sample book discusses the design of Edward Tufte's books[@Tufte2001; @Tufte1990; @Tufte1997; @Tufte2006] and the use of the `tufte-book` and `tufte-handout` document classes.
+
+# The Design of Tufte's Books {#ch:tufte-design}
+
+\newthought{The pages} of a book are usually divided into three major sections: the front matter (also called preliminary matter or prelim), the main matter (the core text of the book), and the back matter (or end matter).
+
+\newthought{The front matter} of a book refers to all of the material that comes before the main text. The following table shows a list of material that appears in the front matter of \VDQI, \EI, \VE, and \BE along with its page number. Page numbers that appear in parentheses refer to folios that do not have a printed page number (but they are still counted in the page number sequence).
+
+\bigskip
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{4}{c}{Books} \\
+\cmidrule(l){2-5} 
+Page content & \vdqi & \ei & \ve & \be \\
+\midrule
+Blank half title page & \hangp{1} & \hangp{1} & \hangp{1} & \hangp{1} \\
+Frontispiece\footnotemark{} & \hangp{2} & \hangp{2} & \hangp{2} & \hangp{2} \\
+Full title page & \hangp{3} & \hangp{3} & \hangp{3} & \hangp{3} \\
+Copyright page & \hangp{4} & \hangp{4} & \hangp{4} & \hangp{4} \\
+Contents & \hangp{5} & \hangp{5} & \hangp{5} & \hangp{5} \\
+Dedication & \hangp{6} & \hangp{7} & \hangp{7} & 7 \\
+Epigraph & -- & -- & \hangp{8} & -- \\
+Introduction & \hangp{7} & \hangp{9} & \hangp{9} & 9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\footnotetext{The contents of this page vary from book to book. In \vdqi this page is blank; in \ei and \ve this page holds a frontispiece; and in \be this page contains three epigraphs.}
+
+\bigskip
+The design of the front matter in Tufte's books varies slightly from the traditional design of front matter. First, the pages in front matter are traditionally numbered with lowercase roman numerals (e.g., i, ii, iii, iv, ...). Second, the front matter page numbering sequence is usually separate from the main matter page numbering. That is, the page numbers restart at 1 when the main matter begins. In contrast, Tufte has enumerated his pages with arabic numerals that share the same page counting sequence as the main matter.
+
+There are also some variations in design across Tufte's four books. The page opposite the full title page (labeled "frontispiece" in the above table) has different content in each of the books. In \VDQI, this page is blank; in \EI and \VE, this page holds a frontispiece; and in \BE, this page contains three epigraphs.
+
+The dedication appears on page 6 in \vdqi (opposite the introduction), and is placed on its own spread in the other books. In \ve, an epigraph shares the spread with the opening page of the introduction.
+
+None of the page numbers (folios) of the front matter are expressed except in \be, where the folios start to appear on the dedication page.
+
+\newthought{The full title page} of each of the books varies slightly in design. In all the books, the author's name appears at the top of the page, the title is set just above the center line, and the publisher is printed along the bottom margin. Some of the differences are outlined in the following table.
+
+\bigskip
+\begin{center}
+\footnotesize
+\begin{tabular}{lllll}
+\toprule
+Feature & \vdqi & \ei & \ve & \be \\
+\midrule
+Author & & & & \\
+\quad Typeface & serif   & serif   & serif   & sans serif \\
+\quad Style    & italics & italics & italics & upright, caps \\
+\quad Size     & 24 pt   & 20 pt   & 20 pt   & 20 pt \\
+\addlinespace
+Title & & & & \\
+\quad Typeface & serif   & serif   & serif   & sans serif \\
+\quad Style    & upright & italics & upright & upright, caps \\
+\quad Size     & 36 pt   & 48 pt   & 48 pt   & 36 pt \\
+\addlinespace
+Subtitle & & & & \\
+\quad Typeface & \na     & \na     & serif   & \na \\
+\quad Style    & \na     & \na     & upright & \na \\
+\quad Size     & \na     & \na     & 20 pt   & \na \\
+\addlinespace
+Edition & & & & \\
+\quad Typeface & sans serif    & \na  & \na  & \na \\
+\quad Style    & upright, caps & \na  & \na  & \na \\
+\quad Size     & 14 pt         & \na  & \na  & \na \\
+\addlinespace
+Publisher & & & & \\
+\quad Typeface & serif   & serif   & serif   & sans serif \\
+\quad Style    & italics & italics & italics & upright, caps \\
+\quad Size     & 14 pt   & 14 pt   & 14 pt   & 14 pt \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+:::: {.column-page}
+![](style-guide/graphics/vdqi-title.pdf){width=45%}
+![](style-guide/graphics/ei-title.pdf){width=45%}
+
+![](style-guide/graphics/ve-title.pdf){width=45%}
+![](style-guide/graphics/be-title.pdf){width=45%}
+::::
+
+\newthought{The tables of contents} in Tufte's books give us our first glimpse of the structure of the main matter. \VDQI is split into two parts, each containing some number of chapters. His other three books only contain chapters—they're not broken into parts.
+
+:::: {.column-page}
+![](style-guide/graphics/vdqi-contents.pdf){width=45%}
+![](style-guide/graphics/ei-contents.pdf){width=45%}
+
+![](style-guide/graphics/ve-contents.pdf){width=45%}
+![](style-guide/graphics/be-contents.pdf){width=45%}
+::::
+
+## Typefaces {#sec:typefaces1}
+
+Tufte's books primarily use two typefaces: Bembo and Gill Sans. Bembo is used for the headings and body text, while Gill Sans is used for the title page and opening epigraphs in \BE.
+
+Since neither Bembo nor Gill Sans are available in default LaTeX installations, the \TL document classes default to using Palatino and Helvetica, respectively. In addition, the Bera Mono typeface is used for `monospaced` type.
+
+The following font sizes are defined by the \TL classes:
+
+\begin{table}[h]
+\footnotesize
+\begin{center}
+\begin{tabular}{lccl}
+\toprule
+\LaTeX{} size & Font size & Leading & Used for \\
+\midrule
+\verb+\tiny+         &  5 &  6 & sidenote numbers \\
+\verb+\scriptsize+   &  7 &  8 & \na \\
+\verb+\footnotesize+ &  8 & 10 & sidenotes, captions \\
+\verb+\small+        &  9 & 12 & quote, quotation, and verse environments \\
+\verb+\normalsize+   & 10 & 14 & body text \\
+\verb+\large+        & 11 & 15 & \textsc{b}-heads \\
+\verb+\Large+        & 12 & 16 & \textsc{a}-heads, \textsc{toc} entries, author, date \\
+\verb+\LARGE+        & 14 & 18 & handout title \\
+\verb+\huge+         & 20 & 30 & chapter heads \\
+\verb+\Huge+         & 24 & 36 & part titles \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{A list of \LaTeX{} font sizes as defined by the \TL document classes.}
+\label{tab:font-sizes}
+\end{table}
+
+## Headings {#sec:headings1}
+
+Tufte's books include the following heading levels: parts, chapters^[Parts and chapters are defined for the `tufte-book` class only.], sections, subsections, and paragraphs. Not defined by default are: sub-subsections and subparagraphs.
+
+\begin{table}[h]
+\begin{center}
+\footnotesize
+\begin{tabular}{lcr}
+\toprule
+Heading & Style & Size \\
+\midrule
+Part & roman & \measure{24}{36}{40} \\
+Chapter & italic & \measure{20}{30}{40} \\
+Section & italic & \measure{12}{16}{26} \\
+Subsection & italic & \measure{11}{15}{26} \\
+Paragraph & italic & 10/14 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Heading styles used in \BE.}
+\label{tab:heading-styles}
+\end{table}
+
+### Paragraph {.unnumbered}
+
+Paragraph headings (as shown here) are introduced by italicized text and separated from the main paragraph by a bit of space.
+
+## Environments
+
+The following characteristics define the various environments:
+
+\begin{table}[h]
+\begin{center}
+\footnotesize
+\begin{tabular}{lcl}
+\toprule
+Environment & Font size & Notes \\
+\midrule
+Body text & \measure{10}{14}{26} & \\
+Block quote & \measure{9}{12}{24} & Block indent (left and right) by \unit[1]{pc} \\
+Sidenotes & \measure{8}{10}{12} & Sidenote number is set inline, followed by word space \\
+Captions & \measure{8}{10}{12} &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Environment styles used in \BE.}
+\label{tab:environment-styles}
+\end{table}
+
+# On the Use of the tufte-book Document Class {#ch:tufte-book}
+
+The \TL document classes define a style similar to the style Edward Tufte uses in his books and handouts. Tufte's style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography. This document aims to be at once a demonstration of the features of the \TL document classes and a style guide to their use.
+
+## Page Layout {#sec:page-layout}
+
+### Headings {#sec:headings}
+
+This style provides \textsc{a}- and \textsc{b}-heads (that is, `\section` and `\subsection`), demonstrated above.
+
+If you need more than two levels of section headings, you'll have to define them yourself at the moment; there are no pre-defined styles for anything below a `\subsection`. As Bringhurst points out in *The Elements of Typographic Style*[@Bringhurst2005], you should "use as many levels of headings as you need: no more, and no fewer."
+
+The \TL classes will emit an error if you try to use `\subsubsection` and smaller headings.
+
+\newthought{In his later books}[@Tufte2006], Tufte starts each section with a bit of vertical space, a non-indented paragraph, and sets the first few words of the sentence in \textsc{small caps}. To accomplish this using this style, use the `\newthought` command.
+
+## Sidenotes {#sec:sidenotes}
+
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes. There is a wide margin to provide ample room for sidenotes and small figures. Any footnotes will automatically be converted to sidenotes.^[This is a sidenote that was entered using the footnote command.] If you'd like to place ancillary information in the margin without the sidenote mark (the superscript number), you can use the `\marginnote` command.
+
+::: {.marginnote}
+This is a margin note. Notice that there isn't a number preceding the note, and there is no number in the main text where this note was written.
+:::
+
+The specification of the `\sidenote` command is:
+
+```
+\sidenote[<number>][<offset>]{<Sidenote text.>}
+```
+
+Both the optional `number` and `offset` arguments are optional. If you provide a `number` argument, then that number will be used as the sidenote number. It will change the number of the current sidenote only and will not affect the numbering sequence of subsequent sidenotes.
+
+Sometimes a sidenote may run over the top of other text or graphics in the margin space. If this happens, you can adjust the vertical position of the sidenote by providing a dimension in the `offset` argument. Some examples of valid dimensions are:
+
+```
+1.0in    2.54cm    254mm    6\baselineskip
+```
+
+If the dimension is positive it will push the sidenote down the page; if the dimension is negative, it will move the sidenote up the page.
+
+## References
+
+References are placed alongside their citations as sidenotes, as well.^[The first paragraph of this document includes a citation.] This can be accomplished using the normal `\cite` command.
+
+The complete list of references may also be printed automatically by using the `\bibliography` command. (See the end of this document for an example.) If you do not want to print a bibliography at the end of your document, use the `\nobibliography` command in its place.
+
+## Figures and Tables {#sec:figures-and-tables}
+
+Images and graphics play an integral role in Tufte's work. In addition to the standard figure and tabular environments, this style provides special figure and table environments for full-width floats.
+
+Full page-width figures and tables may be placed in `figure*` or `table*` environments. To place figures or tables in the margin, use the `marginfigure` or `margintable` environments as follows:
+
+::: {.marginfigure}
+![This is a margin figure. The helix is defined by $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$. The figure was drawn using Asymptote (http://asymptote.sf.net/).](style-guide/graphics/helix.pdf){#fig:marginfig}
+:::
+
+The `marginfigure` and `margintable` environments accept an optional parameter that adjusts the vertical position of the figure or table. See the "Sidenotes" section above for examples.
+
+Figure @fig:fullfig is an example of a full-width figure and Figure @fig:textfig is an example of the normal figure environment.
+
+:::: {.column-page}
+![This graph shows $y = \sin x$ from about $x = [-10, 10]$. *Notice that this figure takes up the full page width.*](style-guide/graphics/sine.pdf){#fig:fullfig}
+::::
+
+![Hilbert curves of various degrees $n$. *Notice that this figure only takes up the main textblock width.*](style-guide/graphics/hilbertcurves.pdf){#fig:textfig}
+
+Table @tbl:normaltab shows a table created with the `booktabs` package. Notice the lack of vertical rules—they serve only to clutter the table's data.
+
+\begin{table}[ht]
+\centering
+\fontfamily{ppl}\selectfont
+\begin{tabular}{ll}
+\toprule
+Margin & Length \\
+\midrule
+Paper width & \unit[8\nicefrac{1}{2}]{inches} \\
+Paper height & \unit[11]{inches} \\
+Textblock width & \unit[6\nicefrac{1}{2}]{inches} \\
+Textblock/sidenote gutter & \unit[\nicefrac{3}{8}]{inches} \\
+Sidenote width & \unit[2]{inches} \\
+\bottomrule
+\end{tabular}
+\caption{Here are the dimensions of the various margins used in the Tufte-handout class.}
+\label{tab:normaltab}
+\end{table}
+
+\newthought{Occasionally} LaTeX will generate an error message:
+
+```
+Error: Too many unprocessed floats
+```
+
+LaTeX tries to place floats in the best position on the page. Until it's finished composing the page, however, it won't know where those positions are. If you have a lot of floats on a page (including sidenotes, margin notes, figures, tables, etc.), LaTeX may run out of "slots" to keep track of them and will generate the above error.
+
+## Typography {#sec:typography}
+
+### Typefaces {#sec:typefaces}
+
+If the Palatino, Helvetica, and Bera Mono typefaces are installed, this style will use them automatically. Otherwise, we'll fall back on the Computer Modern typefaces.
+
+### Letterspacing {#sec:letterspacing}
+
+This document class includes two new commands and some improvements on existing commands for letterspacing.
+
+When setting strings of \allcaps{ALL CAPS} or \smallcaps{small caps}, the letterspacing—that is, the spacing between the letters—should be increased slightly[@Bringhurst2005]. The `\allcaps` command has proper letterspacing for strings of \allcaps{FULL CAPITAL LETTERS}, and the `\smallcaps` command has letterspacing for \smallcaps{small capital letters}. These commands will also automatically convert the case of the text to upper- or lowercase, respectively.
+
+## Document Class Options {#sec:options}
+
+The `tufte-book` class is based on the LaTeX `book` document class. Therefore, you can pass any of the typical book options. There are a few options that are specific to the `tufte-book` document class, however.
+
+The `a4paper` option will set the paper size to \smallcaps{A4} instead of the default \smallcaps{US} letter size.
+
+The `sfsidenotes` option will set the sidenotes and title block in a sans serif typeface instead of the default roman.
+
+The `twoside` option will modify the running heads so that the page number is printed on the outside edge (as opposed to always printing the page number on the right-side edge in `oneside` mode).
+
+The `symmetric` option typesets the sidenotes on the outside edge of the page. This is how books are traditionally printed, but is contrary to Tufte's book design which sets the sidenotes on the right side of the page. This option implicitly sets the `twoside` option.
+
+The `justified` option sets all the text fully justified (flush left and right). The default is to set the text ragged right. The body text of Tufte's books are set ragged right. This prevents needless hyphenation and makes it easier to read the text in the slightly narrower column.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
