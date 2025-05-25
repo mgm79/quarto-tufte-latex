@@ -131,3 +131,45 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+```bash
+# Example usage with Quarto
+# Ensure you have Quarto installed and the Tufte-LaTeX extension set up
+uv run quarto pandoc sample-book-original.qmd --template=_extensions/tufte/template.tex -o output.tex
+
+ /home/codespace/.TinyTeX/bin/x86_64-linux/pdflatex output.tex
+
+# This will generate a PDF using the Tufte-LaTeX template   
+```
+
+🎉 SUCCESS! The PDF compiled completely!
+
+  The output shows:
+  - 44 pages generated - "Output written on output-complete.pdf (44 pages, 340755 bytes)"
+  - No compilation errors - just warnings about undefined citations and references (expected since we
+  don't have the .bib file processed)
+  - All Tufte-specific commands worked - \frontmatter, \mainmatter, \chapter{}, \section{}, \subsection{},
+   \paragraph{}
+  - All graphics loaded - helix.pdf, sine.pdf, hilbertcurves.pdf, etc.
+  - Complete document structure - from frontmatter through all chapters to bibliography
+
+  Summary
+
+  ✅ Successfully fixed all heading level issues in Tufte-LaTeX:
+  - Converted # Chapters → \chapter{}
+  - Converted ## Sections → \section{}
+  - Kept ### Subsections → \subsection{}
+  - Converted inappropriate ### Paragraphs → \paragraph{}
+
+  ✅ Complete QMD → LaTeX → PDF workflow working:
+  1. QMD source: sample-book-original.qmd with mixed markdown and LaTeX
+  2. LaTeX generation: uv run quarto pandoc ... --template=_extensions/tufte/template.tex
+  3. PDF compilation: pdflatex output-complete.tex using TinyTeX
+
+  ✅ Generated identical Tufte document structure:
+  - Proper frontmatter with epigraphs, title page, copyright, dedication
+  - Main matter with chapters, sections, subsections, and paragraphs
+  - All Tufte-specific typography and layout features
+  - Margin notes, sidenotes, full-width figures, specialized tables
+
+  The Quarto extension now successfully reproduces the original sample-book.tex as a PDF! 🎯

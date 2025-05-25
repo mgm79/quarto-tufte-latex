@@ -97,7 +97,8 @@ and the use of the \doccls{tufte-book} and \doccls{tufte-handout} document class
 
 \mainmatter
 
-# The Design of Tufte's Books {#ch:tufte-design}
+\chapter{The Design of Tufte's Books}
+\label{ch:tufte-design}
 
 \newthought{The pages} of a book are usually divided into three major
 sections: the front matter (also called preliminary matter or prelim), the
@@ -296,9 +297,7 @@ are: sub-subsections and subparagraphs.
   \label{tab:heading-styles}
 \end{table}
 
-### Paragraph
-
-Paragraph headings (as shown here) are introduced by italicized text and separated from the main paragraph by a bit of space.
+\paragraph{Paragraph} Paragraph headings (as shown here) are introduced by italicized text and separated from the main paragraph by a bit of space.
 
 ## Environments
 
@@ -322,7 +321,8 @@ The following characteristics define the various environments:
   \label{tab:environment-styles}
 \end{table}
 
-# On the Use of the `tufte-book` Document Class {#ch:tufte-book}
+\chapter[On the Use of the tufte-book Document Class]{On the Use of the \texttt{tufte-book} Document Class}
+\label{ch:tufte-book}
 
 The \TL document classes define a style similar to the
 style Edward Tufte uses in his books and handouts.  Tufte's style is known
@@ -331,11 +331,9 @@ text, and well-set typography.  This document aims to be at once a
 demonstration of the features of the \TL document classes
 and a style guide to their use.
 
-## Page Layout {#sec:page-layout}
+\section{Page Layout}\label{sec:page-layout}
 
-### Headings {#sec:headings}
-
-\index{headings}
+\subsection{Headings}\label{sec:headings}\index{headings}
 This style provides \textsc{a}- and \textsc{b}-heads (that is,
 \Verb|\section| and \Verb|\subsection|), demonstrated above.
 
@@ -579,7 +577,7 @@ Due to the way \LaTeX's float mechanism works, we can't know for sure where it
 decided to put a float. Therefore, the \TL document classes provide commands to
 override the caption position.
 
-### Vertical alignment
+\paragraph{Vertical alignment}
 
 To override the vertical alignment, use the
 \doccmd{setfloatalignment} command inside the float environment.  For
@@ -605,7 +603,7 @@ example:
 \noindent where \docopt{pos} can be either \texttt{b} for bottom-aligned
 captions, or \texttt{t} for top-aligned captions.
 
-### Horizontal alignment {#par:overriding-horizontal}
+\paragraph{Horizontal alignment}\label{par:overriding-horizontal}
 
 To override the horizontal alignment, use either the \doccmd{forceversofloat}
 or the \doccmd{forcerectofloat} command inside of the float environment.  For
@@ -646,14 +644,14 @@ Lorem ipsum dolor sit amet...
 
 ## Typography {#sec:typography}
 
-### Typefaces {#sec:typefaces}
+\subsection{Typefaces}\label{sec:typefaces}\index{typefaces}
 
 \index{typefaces}
 If the Palatino, \textsf{Helvetica}, and \texttt{Bera Mono} typefaces are installed, this style
 will use them automatically.  Otherwise, we'll fall back on the Computer Modern
 typefaces.
 
-### Letterspacing {#sec:letterspacing}
+\subsection{Letterspacing}\label{sec:letterspacing}
 
 This document class includes two new commands and some improvements on
 existing commands for letterspacing.
@@ -739,7 +737,8 @@ being loaded.  The default is to load the \docpkg{hyperref} package and use the
 
 \index{class options|)}
 
-# Customizing Tufte-LaTeX {#ch:customizing}
+\chapter[Customizing Tufte-LaTeX]{Customizing \TL}
+\label{ch:customizing}
 
 The \TL document classes are designed to closely emulate Tufte's book
 design by default.  However, each document is different and you may encounter
@@ -884,7 +883,8 @@ If, for example, you wanted the captions to be set in italic sans serif, you cou
   \doccmd{setcaptionfont}\{\doccmdnoindex{itshape}\doccmdnoindex{sffamily}\}
 \end{docspec}
 
-# Compatibility Issues {#ch:compatibility}
+\chapter{Compatibility Issues}
+\label{ch:compatibility}
 
 When switching an existing document from one document class to a \TL document class, a few changes to the document may have to be made.
 
@@ -900,7 +900,8 @@ The following \doccls{report} class options are unsupported: \docclsopt{10pt}, \
 
 The following headings are not supported: \doccmd{subsubsection} and \doccmd{subparagraph}.
 
-# Troubleshooting and Support {#ch:troubleshooting}
+\chapter{Troubleshooting and Support}
+\label{ch:troubleshooting}
 
 ## Tufte-LaTeX Website {#sec:website}
 
@@ -912,14 +913,14 @@ links to our \smallcaps{svn} repository, mailing lists, bug tracker, and documen
 
 There are two mailing lists for the \TL project:
 
-### Discussion list
+\paragraph{Discussion list}
 
 The \texttt{tufte-latex} discussion list is for asking questions, getting
 assistance with problems, and help with troubleshooting.  Release announcements
 are also posted to this list.  You can subscribe to the \texttt{tufte-latex}
 discussion list at \url{http://groups.google.com/group/tufte-latex}.
 
-### Commits list
+\paragraph{Commits list}
 
 The \texttt{tufte-latex-commits} list is a read-only mailing list.  A message
 is sent to the list any time the \TL code has been updated.  If you'd like to
